@@ -33,12 +33,12 @@ public final class GoLexer {
 	private GoLexer() {
 	}
 
-	public static enum Literals implements TokenType {
+	public enum Literals implements TokenType {
 
 		INTEGER(DECIMAL_LIT + "|" + HEXADECIMAL_LIT + "|" + OCTAL_LIT), FLOAT(FLOAT_LIT), STRING(STRING_LIT);
 		private final String regexp;
 
-		private Literals(String regexp) {
+		Literals(String regexp) {
 			this.regexp = regexp;
 		}
 
@@ -59,7 +59,7 @@ public final class GoLexer {
 
 	}
 
-	public static enum Keyword implements TokenType {
+	public enum Keyword implements TokenType {
 		BREAK("break"), DEFAULT("default"), FUNC("func"), INTERFACE("interface"), SELECT("select"), CASE("case"), DEFER(
 				"defer"), GO("go"), MAP("map"), STRUCT("struct"), CHAN("chan"), ELSE("else"), GOTO("goto"), PACKAGE(
 						"package"), SWITCH("switch"), CONST("const"), FALLTHROUGH("fallthrough"), IF("if"), RANGE(
@@ -76,7 +76,7 @@ public final class GoLexer {
 
 		private final String value;
 
-		private Keyword(String value) {
+		Keyword(String value) {
 			this.value = value;
 		}
 
@@ -109,7 +109,7 @@ public final class GoLexer {
 
 	public static final String COMMENT_SYMBOL = "//";
 
-	public static enum Punctuators implements TokenType {
+	public enum Punctuators implements TokenType {
 
 		PAREN_L("("), PAREN_R(")"), BRACE_L("{"), BRACE_R("}"), EQ("="), EQ2(":="), COMMA(","), SEMICOLON(";"), ADD(
 				"+"), SUB("-"), MUL("*"), DIV("/"), EQEQ(
@@ -117,7 +117,7 @@ public final class GoLexer {
 
 		private final String value;
 
-		private Punctuators(String value) {
+		Punctuators(String value) {
 			this.value = value;
 		}
 

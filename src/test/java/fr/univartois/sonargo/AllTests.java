@@ -33,12 +33,10 @@ import fr.univartois.sonargo.core.rules.GoErrorTest;
 import fr.univartois.sonargo.core.rules.GoLintIssueLoaderSendorTest;
 import fr.univartois.sonargo.core.rules.GoLintRulesDefinitionTest;
 import fr.univartois.sonargo.core.settings.GoPropertiesTest;
-import fr.univartois.sonargo.coverage.CoverageParser;
-import fr.univartois.sonargo.coverage.CoverageSensor;
 
 @RunWith(Suite.class)
-@SuiteClasses({ EvalTest.class, GoErrorTest.class, GoLanguageTest.class, GoQualityProfileTest.class,
-	GoLintIssueLoaderSendorTest.class, GoLintRulesDefinitionTest.class, GoPluginTest.class, GoPropertiesTest.class,
-	CoverageParser.class, CoverageSensor.class, GoLexerTest.class })
+@SuiteClasses({EvalTest.class, GoErrorTest.class, GoLanguageTest.class, GoQualityProfileTest.class,
+        GoLintIssueLoaderSendorTest.class, GoLintRulesDefinitionTest.class, GoPluginTest.class, GoPropertiesTest.class,
+        GoLexerTest.class})
 public class AllTests {
 }

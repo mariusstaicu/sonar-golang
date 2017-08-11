@@ -21,13 +21,13 @@
  *******************************************************************************/
 package fr.univartois.sonargo;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.sonar.api.Plugin;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.internal.SonarRuntimeImpl;
 import org.sonar.api.utils.Version;
+
+import static org.junit.Assert.assertEquals;
 
 public class GoPluginTest {
     private final SonarGoPlugin javaPlugin = new SonarGoPlugin();
@@ -35,10 +35,10 @@ public class GoPluginTest {
 
     @Test
     public void test() {
-	final SonarRuntime runtime = SonarRuntimeImpl.forSonarLint(VERSION_6_0);
-	final Plugin.Context context = new Plugin.Context(runtime);
-	javaPlugin.define(context);
-	assertEquals(10, context.getExtensions().size());
+        final SonarRuntime runtime = SonarRuntimeImpl.forSonarLint(VERSION_6_0);
+        final Plugin.Context context = new Plugin.Context(runtime);
+        javaPlugin.define(context);
+        assertEquals(12, context.getExtensions().size());
 
     }
 

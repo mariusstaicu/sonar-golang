@@ -1,6 +1,10 @@
 package fr.univartois.sonargo.coverage;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import org.sonar.api.batch.fs.internal.DefaultInputFile;
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,15 +14,11 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.sonar.api.batch.fs.internal.DefaultInputFile;
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
-
 import fr.univartois.sonargo.AbstractSonarTest;
 import fr.univartois.sonargo.TestUtils;
 import fr.univartois.sonargo.core.language.GoLanguage;
+
+import static org.junit.Assert.assertEquals;
 
 public class CoverageSensorTest extends AbstractSonarTest {
     private static final Logger LOGGER = Loggers.get(CoverageSensorTest.class);
@@ -33,7 +33,7 @@ public class CoverageSensorTest extends AbstractSonarTest {
     public void testCreateStream() {
 	final CoverageSensor sensor = new CoverageSensor();
 	try (Stream<Path> paths = sensor.createStream(testerContext)) {
-	    assertEquals(22, paths.count());
+	    assertEquals(20, paths.count());
 
 	} catch (final IOException e) {
 	    // TODO Auto-generated catch block
