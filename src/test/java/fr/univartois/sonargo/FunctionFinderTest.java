@@ -27,9 +27,9 @@ public class FunctionFinderTest extends AbstractSonarTest {
     public void testSearchInFile() {
 	try {
 	    FunctionFinder f = new FunctionFinder(testerContext);
-	    assertEquals("TestAverage", f.getName("func TestAverage(t *testing.T)"));
-	    assertEquals("TestGutterBalls", f.getName("func TestGutterBalls(t *testing.T)"));
-	    assertEquals("TestOnePinOnEveryThrow", f.getName("func TestOnePinOnEveryThrow(t *testing.T) {"));
+	    assertEquals("TestAverage", f.searchIn("func TestAverage(t *testing.T)"));
+	    assertEquals("TestGutterBalls", f.searchIn("func TestGutterBalls(t *testing.T)"));
+	    assertEquals("TestOnePinOnEveryThrow", f.searchIn("func TestOnePinOnEveryThrow(t *testing.T) {"));
 	} catch (IOException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();

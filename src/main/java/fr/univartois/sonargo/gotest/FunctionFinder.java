@@ -34,13 +34,11 @@ public class FunctionFinder {
     }
 
     private void searchFunctionInFile(Path p) {
-
         try (Stream<String> stream = Files.lines(p)) {
-
             stream
                     .filter(line -> line.contains("(t *testing.T)"))
                     .forEach((line) -> {
-                        String nameFunction = getName(line);
+                        String nameFunction = searchIn(line);
                         if (nameFunction == null)
                             return;
                         result.put(nameFunction, p.toFile().getAbsolutePath());
@@ -51,22 +49,22 @@ public class FunctionFinder {
         }
     }
 
-    public String getName(String line) {
+    public String searchIn(String line) {
         int indexTesting = line.indexOf("Test");
 
-	if (indexTesting == -1) {
-	    LOGGER.warn("This function name is not correct: " + s);
-	    return null;
-	}
-	int indexParen = line.indexOf("(", indexTesting);
-	if (indexParen == -1) {
-	    LOGGER.warn("This function name is not correct: " + s);
-	    return null;
-	}
-	int indexCloseParen = line.indexOf(")");
-	if (indexCloseParen < indexParen) {
-	    indexTesting = line.indexOf("Test", indexCloseParen);
-	}
+        if (indexTesting == -1) {
+            LOGGER.warn("This function name is not correct: " + line);
+            return null;
+        }
+        int indexParen = line.indexOf("(", indexTesting);
+        if (indexParen == -1) {
+            LOGGER.warn("This function name is not correct: " + line);
+            return null;
+        }
+        int indexCloseParen = line.indexOf(")");
+        if (indexCloseParen < indexParen) {
+            indexTesting = line.indexOf("Test", indexCloseParen);
+        }
 
         return line.substring(indexTesting, indexParen);
     }
