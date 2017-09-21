@@ -54,15 +54,19 @@ public class FunctionFinder {
     public String getName(String line) {
         int indexTesting = line.indexOf("Test");
 
-        if (indexTesting == -1) {
-            LOGGER.warn("This function name is not correct: " + line);
-            return null;
-        }
-        int indexParen = line.indexOf("(", indexTesting);
-        if (indexParen == -1) {
-            LOGGER.warn("This function name is not correct: " + line);
-            return null;
-        }
+	if (indexTesting == -1) {
+	    LOGGER.warn("This function name is not correct: " + s);
+	    return null;
+	}
+	int indexParen = line.indexOf("(", indexTesting);
+	if (indexParen == -1) {
+	    LOGGER.warn("This function name is not correct: " + s);
+	    return null;
+	}
+	int indexCloseParen = line.indexOf(")");
+	if (indexCloseParen < indexParen) {
+	    indexTesting = line.indexOf("Test", indexCloseParen);
+	}
 
         return line.substring(indexTesting, indexParen);
     }
